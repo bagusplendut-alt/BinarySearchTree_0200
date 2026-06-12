@@ -9,3 +9,7 @@ class Node {
         string info;
         Node* leftChild;
         Node* rightChild;
+
+        //membuat constructor untuk class node
+    Node(string i, Node* l, Node* r) {
+        
