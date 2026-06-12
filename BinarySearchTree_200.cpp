@@ -19,3 +19,6 @@ class Node {
     }
 
 };
+
+//membuat class BinarTree
+    class BinaryTree {
