@@ -43,3 +43,9 @@ class BinaryTree {
                 Node* parent = nullptr;
                 Node* currentNode = nullptr;
                 search(element, parent, currentNode);
+
+                //membuat concitional statement
+                if (parent == nullptr) {
+                    ROOT = newNode;
+                    return;
+                }
