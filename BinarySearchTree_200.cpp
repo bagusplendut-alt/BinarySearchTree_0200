@@ -39,3 +39,7 @@ class BinaryTree {
                 Node* newNode = new Node(element, nullptr, nullptr);
                 newNode->info = element;
                 newNode->leftChild = nullptr;
+
+                Node* parent = nullptr;
+                Node* currentNode = nullptr;
+                search(element, parent, currentNode);
