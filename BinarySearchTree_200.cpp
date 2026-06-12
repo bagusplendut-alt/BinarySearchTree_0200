@@ -59,6 +59,33 @@ class BinaryTree {
                 parent->leftChild = newNode;
             }
     }
-};
+}
 
-//
+//membuat dan mengidentifikasikan 
+void search(string element, Node*& parent, Node*& currentNode) {
+    currentNode = ROOT;
+    parent = nullptr;
+    while ((currentNode != nullptr) && (currentNode->info != element))
+    {
+
+        parent = currentNode;
+        if (element < currentNode->info)
+             currentNode = currentNode->leftChild;
+         else
+            currentNode = currentNode->rightChild;
+    }
+}
+    
+void inorder(Node* ptr) {
+
+    if (ROOT == nullptr) {
+        cout << "Tree is empty" << endl;
+        return;
+    }
+    if (ptr != nullptr) {
+        inorder(ptr->leftChild);
+        cout << ptr->info << " ";
+        inorder(ptr->rightChild);
+    }
+}
+            
