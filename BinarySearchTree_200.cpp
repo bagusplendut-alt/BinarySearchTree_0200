@@ -2,52 +2,51 @@
 using namespace std;
 
 //membuat class node
-class Node {
+class Node{
+    //memberi akses modifier serta mendeklarasi variable dan project node
+public:
+    string info;
+    Node* leftChild;
+    Node* rightChilt;
 
-    //memberi akses modifier serta mendeklarasi variabel dan object node
-    public :
-        string info;
-        Node* leftChild;
-        Node* rightChild;
-
-        //membuat constructor untuk class node
-    Node(string i, Node* l, Node* r) {
+    
+    //membuat constructor untuk class node
+    Node(string i, Node* l, Node* r){
         //memberi nilai parameter ke variabel
         info = i;
         leftChild = l;
-        rightChild = r;
+        rightChilt = r;
     }
-
 };
 
-//membuat class BinarTree
-class BinaryTree {
+class BinaryTree{
 
     //memberi akses modifier dan deklarasi object
-    public :
+public :
     Node* ROOT;
 
     //membuat constructor dan memberi nilai kepada object root
-    BinaryTree() {
-    ROOT = nullptr;
+    BinaryTree(){
+        ROOT = nullptr;
     }
 
     //membuat prosedur insert
-     void insert(string element) {
+        void insert(string element){
 
-        //memberi nilai untuk setiap object yang berada di dalam prosedur insert
-        Node* newNode = new Node(element, nullptr, nullptr);
-        newNode->info = element;
-        newNode->leftChild = nullptr;
+            //memberi nilai untuk setiap object yang berada di dalam prosedur insert
+            Node* newNode = new Node(element, nullptr, nullptr);
+            newNode->info = element;
+            newNode->leftChild = nullptr;
+            newNode->rightChilt = nullptr;
 
-        Node* parent = nullptr;
-        Node* currentNode = nullptr;
-        search(element, parent, currentNode);
+            Node* parent = nullptr;
+            Node* currentNode = nullptr;
+            search(element, parent, currentNode);
 
-        //membuat concitional statement
-        if (parent == nullptr) {
-            ROOT = newNode;
-            return;
+            //membuat coditional statement
+            if(parent == nullptr){
+                ROOT = newNode;
+                return;
             }
 
             if (element < parent->info)
@@ -56,63 +55,58 @@ class BinaryTree {
             }
             else if (element > parent->info)
             {
-                parent->leftChild = newNode;
+                parent->rightChilt = newNode;
             }
-    }
-}
+        }
 
-//membuat dan mengidentifikasikan 
-void search(string element, Node*& parent, Node*& currentNode) {
-    currentNode = ROOT;
-    parent = nullptr;
-    while ((currentNode != nullptr) && (currentNode->info != element))
-    {
+        void search(string element, Node*& parent, Node*& currentNode){
+            currentNode = ROOT;
+            parent = nullptr;
+            while((currentNode != nullptr)&&(currentNode->info != element))
+            parent = currentNode;
+            if(element < currentNode->info)
+                currentNode = currentNode->leftChild;
+            else
+                currentNode = currentNode->rightChilt;
+        }
 
-        parent = currentNode;
-        if (element < currentNode->info)
-             currentNode = currentNode->leftChild;
-         else
-            currentNode = currentNode->rightChild;
-    }
-}
-    
-void inorder(Node* ptr) {
+        void inorder(Node* ptr){
+            if(ROOT == nullptr){
+                cout << "Tree is empty" << endl;
+                return;
+            }
+            if (ptr != nullptr){
+                inorder(ptr->leftChild);
+                cout << ptr->info << " ";
+                inorder(ptr->rightChilt);
+            }
+        }
 
-    if (ROOT == nullptr) {
-        cout << "Tree is empty" << endl;
-        return;
-    }
-    if (ptr != nullptr) {
-        inorder(ptr->leftChild);
-        cout << ptr->info << " ";
-        inorder(ptr->rightChild);
-    }
-}
-            
-void preorder(Node* ptr) {
+        void preorder(Node* ptr){
 
-    if (ROOT == nullptr) {
-        cout << "Tree is empty" << endl;
-        return;
-    }
-    if (ptr != nullptr) {
-        cout << ptr->info << " ";
-        preorder(ptr->leftChild);
-        preorder(ptr->rightChild);
-    }
-}
+            if (ROOT == nullptr){
+                cout << "Tree is empty" << endl;
+                return;
+            }
+            if (ptr != nullptr){
+                cout << ptr->info << " ";
+                preorder(ptr->leftChild);
+                preorder(ptr->rightChilt);
+            }
+        }
 
-void postorder(Node* ptr) {
+        void postorder(Node* ptr){
 
-    if (ROOT == nullptr) {
-        cout << "Tree is empty" << endl;
-        return;
-    }
-    if (ptr != nullptr) {
-        postorder(ptr->leftChild);
-        postorder(ptr->rightChild);
-        cout << ptr->info << " ";
-    }
+            if (ROOT == nullptr){
+                cout << "Tree is empty" << endl;
+                return;
+            }
+            if (ptr != nullptr){
+                postorder(ptr->leftChild);
+                postorder(ptr->rightChilt);
+                cout << ptr->info << " ";
+            }
+        }
 };
 
 int main()
