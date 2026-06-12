@@ -117,53 +117,52 @@ int main()
     //perulangan while selama bernilai benar
     while (true)
     {
-
-         //membuat menu program dan input pilihan
+        // membuat menu program dan input pilihan
         cout << "\nMenu" << endl;
-        cout << "1. Implement insert operation" << endl;
-        cout << "2. Perform inorder traversal" << endl;
-        cout << "3. Perform preorder traversal" << endl;
-        cout << "4. Perform preorder traversal" << endl;
+        cout << "1. implement insert operation" << endl;
+        cout << "2. perform inorder traversal" << endl;
+        cout << "3. perform preorder traversal" << endl;
+        cout << "4. perform postorder traversal" << endl;
         cout << "5. Exit" << endl;
         cout << "\nEnter your choice (1-5) : ";
+
 
         char ch;
         cin >> ch;
         cout << endl;
 
-        //membuat conditional statement dari input ch
+        //membuat conditional statement dati input ch
         switch (ch)
         {
-        case '1':
-        {
-            cout << "Enter a word : ";
-            string word;
-            cin >> word;
-            x.insert(word);
-            break;
+            case '1':
+            {
+                cout << "Enter a word : ";
+                string word;
+                cin >> word;
+                x.insert(word);
+                break; 
+            }
+            case '2': {
+                x.inorder(x.ROOT);
+                break;
+            }
+            case '3':{
+                x.preorder(x.ROOT);
+                break;
+            }
+            case '4':{
+                x.postorder(x.ROOT);
+                break;
+            }
+            case '5':{
+                return 0;
+            }
+            default: {
+                cout << "Invalid Option" << endl;
+                break;
+            }
+
         }
-        case '2':
-        {
-            x.inorder(x.ROOT);
-            break;
-        }
-        case '3':
-        {
-            x.preorder(x.ROOT);
-            break;
-        }
-        case '4':
-        {
-            x.postorder(x.ROOT);
-            break;
-        }
-        case '5':
-        {
-            return 0;
-        }
-        default: 
-        {
-            cout << "invalid option" << endl;
-        }
+        
     }
-}    
+}
