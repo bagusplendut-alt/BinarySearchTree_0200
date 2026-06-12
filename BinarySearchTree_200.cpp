@@ -113,4 +113,9 @@ void postorder(Node* ptr) {
         postorder(ptr->rightChild);
         cout << ptr->info << " ";
     }
-}
+};
+
+int main()
+{
+    //deklarasi object x sebagai object BinaryTree
+    BinaryTree x;
